@@ -14,9 +14,9 @@ function Calculator() {
         } else if (firstNum && inputRef.current.value.length >= 17) {
             return;
         } else if(!operation) {
-            setFirstNum((prevFirstNum) => prevFirstNum + (+e.target.value === 0 && !firstNum ? "" : e.target.value) );
+            setFirstNum((prevFirstNum) => prevFirstNum + (prevFirstNum === "0"? "" : e.target.value) );
         } else if (operation) {
-            setSecondNum((prevSecondNum) => prevSecondNum + (+e.target.value === 0 && !secondNum ? "" : e.target.value));
+            setSecondNum((prevSecondNum) => prevSecondNum + (prevSecondNum === "0" ? "" : e.target.value));
         }
     }
 
@@ -53,7 +53,9 @@ function Calculator() {
                     } else {
                         setErrorMsg("You can't divide by 0");
                     }      
-                    break;              
+                    break; 
+                    default:
+                        break;             
             }
             setFirstNum(result);
             setSecondNum("");
